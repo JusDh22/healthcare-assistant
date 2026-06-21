@@ -56,6 +56,3 @@ logs/
 .pytest_cache/
 .coverage
 htmlcov/
-
-# FAISS Index
-data/faiss_index/

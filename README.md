@@ -18,29 +18,6 @@ A comprehensive AI-powered healthcare assistant system that automates medical ta
 - **Tool Logging**: Comprehensive monitoring of all tool executions
 - **LLMOps Dashboard**: Real-time metrics and evaluation
 
-## 🏗️ Architecture
-
-```
-Agentic Healthcare Assistant
-├── Agent Planning Layer
-│   ├── Goal Decomposition
-│   ├── Task Sequencing
-│   └── Tool Selection
-├── Execution Layer
-│   ├── Tool Executor
-│   ├── Memory Manager
-│   └── Error Handler
-├── Integration Layer
-│   ├── Appointment API
-│   ├── EHR Database
-│   ├── Medical Search
-│   └── Vector Store
-└── Presentation Layer
-    ├── Streamlit UI
-    ├── Analytics Dashboard
-    └── User Management
-```
-
 ## 📋 Prerequisites
 
 - Python 3.9+
@@ -52,9 +29,9 @@ Agentic Healthcare Assistant
 
 ## 🚀 Quick Start
 
-### 1. Clone Repository
+### 1. Create Project Directory
 ```bash
-git clone https://github.com/JusDh22/healthcare-assistant.git
+mkdir healthcare-assistant
 cd healthcare-assistant
 ```
 
@@ -72,38 +49,41 @@ pip install -r requirements.txt
 ### 4. Configure Environment
 ```bash
 cp .env.example .env
-# Edit .env with your API keys and configurations
+# Edit .env with your API keys
 ```
 
-### 5. Initialize Database
+### 5. Start Services
 ```bash
 docker-compose up -d
+```
+
+### 6. Initialize Database
+```bash
 python -c "from src.database.db_manager import init_db; init_db()"
 ```
 
-### 6. Run Application
+### 7. Run Application
 ```bash
 streamlit run ui/streamlit_app.py
 ```
 
-## 📚 Usage Examples
+## 📚 Project Structure
 
-### Example 1: Appointment Booking with Medical Context
-```python
-from src.agents.executor import AgentExecutor
-
-executor = AgentExecutor()
-
-query = """
-My 70-year-old father has chronic kidney disease. 
-I want to book a nephrologist for him. 
-Also, can you summarize latest treatment methods?
-"""
-
-result = executor.execute_plan(
-    user_query=query,
-    session_id="session_123"
-)
+```
+healthcare-assistant/
+├── src/
+│   ├── agents/          # Agent planning & execution
+│   ├── tools/           # Tool implementations
+│   ├── llm/             # LLM chains & prompts
+│   ├── database/        # Database models & operations
+│   └── utils/           # Configuration & logging
+├── ui/
+│   ├── streamlit_app.py # Main dashboard
+│   └── pages/           # UI pages
+├── tests/               # Test suite
+├── docker-compose.yml   # Service orchestration
+├── requirements.txt     # Python dependencies
+└── .env.example         # Environment template
 ```
 
 ## 🔐 Security & Compliance
@@ -116,8 +96,4 @@ result = executor.execute_plan(
 
 ## 📝 License
 
-This project is licensed under the MIT License - see LICENSE file for details.
-
-## 👨‍💼 Author
-
-**Project Lead**: Darshan Mangaldas Naik
+MIT License - see LICENSE file for details
